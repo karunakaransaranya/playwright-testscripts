@@ -27,12 +27,44 @@ export default class Checkout {
     }
 
     async validatedetail(qty,productname,productdesc,price) {
-            await expect(this.qty).toContainText(qty.toString());
-            await expect(this.productname).toContainText(productname);
-            await expect(this.productdesc).toContainText(productdesc);
-            await expect(this.price).toContainText(price);    
+        // Validate first item in checkout summary (multiple items exist)
+        await expect(this.qty.first()).toContainText('1');
+        await expect(this.productname.first()).toContainText(productname);
+        await expect(this.productdesc.first()).toContainText(productdesc);
+        await expect(this.price.first()).toContainText(price);    
         await this.finish.click();
         await expect(this.header).toHaveText('Thank you for your order!');
         await expect(this.text).toHaveText('Your order has been dispatched, and will arrive just as fast as the pony can get there!');
+    }
+
+    async validateAllCheckoutDetails(products) {
+        // Validate all products in checkout summary
+        const productNames = this.page.locator('.inventory_item_name');
+        const productDescs = this.page.locator('.inventory_item_desc');
+        const productPrices = this.page.locator('.inventory_item_price');
+        const quantities = this.page.locator('.cart_quantity');
+
+        // Verify number of items matches
+        const itemCount = await productNames.count();
+        expect(itemCount).toBe(products.length);
+        console.log(`Validating ${itemCount} products in checkout`);
+
+        // Validate each product
+        for (let i = 0; i < products.length; i++) {
+            console.log(`Validating product ${i + 1}: ${products[i].name}`);
+            
+            await expect(productNames.nth(i)).toContainText(products[i].name);
+            await expect(productDescs.nth(i)).toContainText(products[i].desc);
+            await expect(productPrices.nth(i)).toContainText(products[i].price);
+            await expect(quantities.nth(i)).toContainText('1');
+            
+            console.log(`✓ Product ${i + 1} validated successfully`);
+        }
+
+        // Proceed to finish order
+        await this.finish.click();
+        await expect(this.header).toHaveText('Thank you for your order!');
+        await expect(this.text).toHaveText('Your order has been dispatched, and will arrive just as fast as the pony can get there!');
+        console.log('Order completed successfully!');
     }
 }

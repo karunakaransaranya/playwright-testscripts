@@ -6,6 +6,7 @@ export default class LoginPage {
         this.password = page.locator("#password");
         this.loginbutton = page.locator("#login-button");
         this.title = page.locator('.title');
+        this.errorMessage = page.locator('[data-test="error"]');
     }
 
     async geturl() {
@@ -17,6 +18,24 @@ export default class LoginPage {
         await this.password.fill("secret_sauce");
         await this.loginbutton.click();
         await expect(this.title).toHaveText('Products');
+    }
 
+    async loginWithCredentials(username, password) {
+        await this.username.fill(username);
+        await this.password.fill(password);
+        await this.loginbutton.click();
+    }
+
+    async getErrorMessage() {
+        return await this.errorMessage.textContent();
+    }
+
+    async isErrorVisible() {
+        return await this.errorMessage.isVisible();
+    }
+
+    async clearFields() {
+        await this.username.clear();
+        await this.password.clear();
     }
 }

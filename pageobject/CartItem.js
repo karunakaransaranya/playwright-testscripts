@@ -38,5 +38,23 @@ export default class CartItem {
    
     }
 
+     async getCartItems() {
+        const cartItems = [];
+        const items = this.page.locator('.cart_item');
+        const itemCount = await items.count();
+        
+        for (let i = 0; i < itemCount; i++) {
+            const item = items.nth(i);
+            const name = await item.locator('.inventory_item_name').textContent();
+            const desc = await item.locator('.inventory_item_desc').textContent();
+            const price = await item.locator('.inventory_item_price').textContent();
+            const qty = await item.locator('.cart_quantity').textContent();
+            
+            cartItems.push({ name, desc, price, qty });
+        }
+        await this.btnchkout.click();
+        return cartItems;
+    }
+
 
 }
