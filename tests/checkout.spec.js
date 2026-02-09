@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AddToCart from '../pageobject/AddToCart.js';
 import CartItem from '../pageobject/CartItem.js';
-import Checkout from '../pageobject/checkout.js';
+import Checkout from '../pageobject/Checkout.js';
 
 
 test("Validate checkout flow with single product", async ({ page }) => {
