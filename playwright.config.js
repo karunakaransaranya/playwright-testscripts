@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 
@@ -7,9 +8,9 @@ import path from 'path';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+const envName = process.env.TEST_ENV || 'dev';
+dotenv.config({ path: path.resolve(process.cwd(), '.env.dev') });
+dotenv.config({ path: path.resolve(process.cwd(), `.env.${envName}`), override: true });
 
 const authFile = 'playwright/.auth/user.json';
 
@@ -36,6 +37,8 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
+
+    headless: false,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "cross-env TEST_ENV=dev npx playwright test",
+    "test": "cross-env TEST_ENV=test npx playwright test",
+    "stage": "cross-env TEST_ENV=stage npx playwright test",
+    "prod": "cross-env TEST_ENV=prod npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.58.0",
-    "@types/node": "^25.0.10"
+    "@types/node": "^25.0.10",
+    "dotenv": "^16.4.7",
+    "cross-env": "^7.0.3"
   }
 }
