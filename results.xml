@@ -1,0 +1,45 @@
+<testsuites id="" name="" tests="2" failures="1" skipped="0" errors="0" time="32.651149000000004">
+<testsuite name="auth.setup.js" timestamp="2026-02-18T20:01:55.877Z" hostname="setup" tests="1" failures="0" skipped="0" time="1.396" errors="0">
+<testcase name="authenticate" classname="auth.setup.js" time="1.396">
+<system-out>
+<![CDATA[Auth state saved to: playwright/.auth/user.json
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="calendly-wed-booking.spec.js" timestamp="2026-02-18T20:01:55.877Z" hostname="chromium" tests="1" failures="1" skipped="0" time="27.532" errors="0">
+<testcase name="Calendly White Belt Class Booking › Book 5:05 PM slot for all available Wednesdays in February" classname="calendly-wed-booking.spec.js" time="27.532">
+<failure message="calendly-wed-booking.spec.js:177:7 Book 5:05 PM slot for all available Wednesdays in February" type="FAILURE">
+<![CDATA[  [chromium] › calendly-wed-booking.spec.js:177:7 › Calendly White Belt Class Booking › Book 5:05 PM slot for all available Wednesdays in February 
+
+    Error: Calendly booking failed for February 18. The API returned an error - this may happen with automated/test bookings.
+
+      166 |   
+      167 |   if (hasError) {
+    > 168 |     throw new Error(`Calendly booking failed for February ${date}. The API returned an error - this may happen with automated/test bookings.`);
+          |           ^
+      169 |   }
+      170 |
+      171 |   // Verify "You are scheduled" confirmation message
+        at bookWednesdaySlot (C:\Users\sarambur\Documents\Work\PlaywrightAutomation\tests\calendly-wed-booking.spec.js:168:11)
+        at C:\Users\sarambur\Documents\Work\PlaywrightAutomation\tests\calendly-wed-booking.spec.js:195:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\calendly-wed-booking-Calen-a6138-able-Wednesdays-in-February-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\calendly-wed-booking-Calen-a6138-able-Wednesdays-in-February-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Found 2 available Wednesdays in February: 18, 25
+Booking Wednesday, February 18...
+
+[[ATTACHMENT|test-results\calendly-wed-booking-Calen-a6138-able-Wednesdays-in-February-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\calendly-wed-booking-Calen-a6138-able-Wednesdays-in-February-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

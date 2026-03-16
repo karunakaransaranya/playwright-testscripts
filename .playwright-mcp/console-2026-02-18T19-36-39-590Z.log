@@ -1,0 +1,2 @@
+[    2060ms] [WARNING] <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes"> @ https://calendly.com/woodbury-tkd/white-belt-class:0
+[  194272ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://calendly.com/api/booking/invitees:0
