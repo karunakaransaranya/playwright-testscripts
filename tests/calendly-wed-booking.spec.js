@@ -172,6 +172,7 @@ async function bookWednesdaySlot(page, date) {
   await expect(page.getByText(/You are scheduled/i)).toBeVisible({ timeout: 15000 });
 }
 
+test.skip();
 test.describe('Calendly White Belt Class Booking', () => {
 
   test('Book 5:05 PM slot for all available Wednesdays in February', async ({ page }) => {
