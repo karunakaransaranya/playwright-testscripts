@@ -6,3 +6,28 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 .slingshot
+
+# Test output
+results.xml
+
+# IDE - JetBrains (IntelliJ/WebStorm)
+.idea/
+*.iml
+*.xml
+*.png
+
+# IDE - VS Code
+.vscode/mcp.json
+
+# Markdown files
+*.md
+
+# Console logs
+console-*.log.gz
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Misc
+*.log
