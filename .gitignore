@@ -9,6 +9,7 @@ node_modules/
 
 # Test output
 results.xml
+index.html
 
 # IDE - JetBrains (IntelliJ/WebStorm)
 .idea/

@@ -19,15 +19,16 @@ const authFile = 'playwright/.auth/user.json';
  */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
+
   fullyParallel: false,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
+
   retries: 0,
-  /* Opt out of parallel tests on CI. */
+
   workers: 1,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+
+  timeout: 60000,
   reporter: [
     ['html', { open: 'never' }],
     ['list'],                 // console output
@@ -38,8 +39,10 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
-    headless: !!process.env.CI,
-
+    headless: false,
+    // launchOptions: {
+    //   slowMo: 1000, // 1 second delay before each action
+    // },
     screenshot: 'only-on-failure',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -56,7 +59,7 @@ export default defineConfig({
 
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         /* Use saved auth state for all tests (if it exists) */
         storageState: fs.existsSync(authFile) ? authFile : undefined,

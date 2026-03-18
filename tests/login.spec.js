@@ -6,7 +6,7 @@ import {
   ERROR_MESSAGES,
 } from './testdata/login.testdata.js';
 
-const LOGIN_URL = process.env.LOGIN_URL || 'https://www.saucedemo.com/';
+//const LOGIN_URL = process.env.LOGIN_URL || 'https://www.saucedemo.com/';
 
 test("Validate the login page with valid credentials", async ({ page }) => {
   const loginPage = new LoginPage(page);
@@ -71,7 +71,7 @@ test("Login with valid username and blank password", async ({ page }) => {
 test('Login Page - Look and Feel (all validations)', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.geturl();
-  await loginPage.validateLookAndFeel(LOGIN_URL, VALID_USERS.map(user => user.username));
+  await loginPage.validateLookAndFeel(process.env.LOGIN_URL, VALID_USERS.map(user => user.username));
 });
 
 // ═══════════════════════════════════════════════════════════════════════
