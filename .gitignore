@@ -6,9 +6,11 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 .slingshot
+.env.*
 
 # Test output
 results.xml
+index.html
 
 # IDE - JetBrains (IntelliJ/WebStorm)
 .idea/

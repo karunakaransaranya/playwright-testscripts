@@ -22,9 +22,9 @@ export default class LoginPage {
 
     async geturl() {
 
-        const loginUrl = process.env.LOGIN_URL;
-       await this.page.goto(loginUrl, { waitUntil: 'domcontentloaded' });
-     
+       const loginUrl = process.env.LOGIN_URL;
+       await this.page.goto(loginUrl);
+       await this.page.waitForLoadState('networkidle');
     
     }
 
@@ -122,8 +122,8 @@ export default class LoginPage {
     }
 
     async login() {
-        await this.username.fill("standard_user");
-        await this.password.fill("secret_sauce");
+        await this.username.fill(process.env.USERNAME);
+        await this.password.fill(process.env.PASSWORD);
         await this.loginbutton.click();
         await expect(this.title).toHaveText('Products');
     }
