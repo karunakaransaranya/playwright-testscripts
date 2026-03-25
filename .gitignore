@@ -22,7 +22,7 @@ index.html
 .vscode/mcp.json
 
 # Markdown files
-*.md
+# *.md
 
 # Console logs
 console-*.log.gz
