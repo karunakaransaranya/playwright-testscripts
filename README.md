@@ -149,6 +149,14 @@ npm run prod      # Uses .env.prod
 ```bash
 npx playwright test tests/login.spec.js
 npx playwright test tests/checkout.spec.js
+```
+
+### Run tests with specific grep pattern
+
+```bash
+npx playwright test --grep "valid credentials"
+npx playwright test --grep "Login"
+```
 
 ### Run in headed mode (see browser)
 
