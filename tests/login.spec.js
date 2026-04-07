@@ -24,7 +24,7 @@ test("Login with invalid password and valid username", async ({ page }) => {
   expect(errorMsg).toContain(ERROR_MESSAGES.userMismatch);
 })
 
-test("Login with invalid username and valid password", async ({ page }) => {
+test("Login with invalid username and valid password ", async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.geturl();
   await loginPage.loginWithCredentials("invalid_user", PASSWORD);
